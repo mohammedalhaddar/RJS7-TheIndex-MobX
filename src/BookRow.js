@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { observer } from "mobx-react";
+
 function BookRow(props) {
   const book = props.book;
 
@@ -14,7 +16,7 @@ function BookRow(props) {
     <button
       className={`btn btn-${book.available ? "success" : "danger"}`}
       onClick={() =>
-        alert("You need to make me 🎵 work work work work work 🎵")
+        book.available = book.available ? false : true
       }
     >
       {book.available ? "borrow" : "return"}
@@ -35,4 +37,4 @@ function BookRow(props) {
   );
 }
 
-export default BookRow;
+export default observer(BookRow);
